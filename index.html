@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <!-- External QR code library -->
     <!--This is the liberary which helps
@@ -23,7 +23,7 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
-    display: flex;
+   
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -70,6 +70,11 @@ input[type="text"] {
 /* Style the QR code div */
 .qrcode {
     margin: 20px 0;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 300px;
 }
 
 /* Style the button */
@@ -90,16 +95,25 @@ button:hover {
 }
 
 
+.btn {width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;}
+
+span {font-size: 14px;color:maroon;}
+
 </style>
 <body>
     <div class="header">
         <div class="box">
             <h1>
-                QR Code Generator
+                QR Code Generator , <span>by Ahmad Ozor</span>
             </h1>
             <hr />
             <div class="sqrcode"></div>
-            <div class="qrcode"></div>
+            <div id="print-content" class="qrcode"></div>
             <input type="text" 
                    placeholder="Paste a URL or enter 
                                 text, then press enter" 
@@ -107,7 +121,27 @@ button:hover {
             <!--generateQr() is the fuction which helps
                 to convert data into QR using the js library-->
         </div>
+        <br>
+  <form>
+
+    <input class="btn btn-primary"
+   type="button" onclick="printDiv('print-content')" value="Print Qr Code"/>
+    </form>
+    
+
     </div>
+
+
+
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w=window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+</script>
     <script src="js/script.js"></script>
 </body>
 
