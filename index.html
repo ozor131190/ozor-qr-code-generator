@@ -104,6 +104,9 @@ button:hover {
 
 span {font-size: 14px;color:maroon;}
 
+
+.demo {color:red;font-weight:bold;font-size: 20px;
+        width: 300px;}
 </style>
 <body>
     <div class="header">
@@ -113,7 +116,13 @@ span {font-size: 14px;color:maroon;}
             </h1>
             <hr />
             <div class="sqrcode"></div>
-            <div id="print-content" class="qrcode"></div>
+            
+            <div id="print-content" class="qrcode">
+                <span  id="demo" class="demo"></span>
+             </div>
+            
+           
+            
             <input type="text" 
                    placeholder="Paste a URL or enter 
                                 text, then press enter" 
@@ -123,14 +132,21 @@ span {font-size: 14px;color:maroon;}
         </div>
         <br>
   <form>
-
+    <input type="text" placeholder="Enter Item Code " id="mycode"
+    onchange="myFunction()">
+    <br><br>
     <input class="btn btn-primary"
    type="button" onclick="printDiv('print-content')" value="Print Qr Code"/>
     </form>
     
 
     </div>
-
+<script>
+function myFunction() {
+  var x = document.getElementById("mycode").value;
+  document.getElementById("demo").innerHTML = "Code: " + x;
+}
+</script>
 
 
 <script type="text/javascript">
@@ -142,6 +158,9 @@ span {font-size: 14px;color:maroon;}
         w.close();
     }
 </script>
+
+
+
     <script src="js/script.js"></script>
 </body>
 
